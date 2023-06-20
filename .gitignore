@@ -164,6 +164,8 @@ build/
 # Python virtual environment
 venv/
 venv\
+.venv/
+.venv\
 .mypy_cache/
 
 # Code coverage report
