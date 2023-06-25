@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,9 +7,14 @@ public class Loot : MonoBehaviour
     [field:SerializeField] public AssetItem Item { get; private set; }
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private LootVisual _lootVisual;
+    [SerializeField] private float _lifetime;
 
     public UnityEvent<Loot> OnTaken;
 
+    private void Start()
+    {
+        StartCoroutine(Die());
+    }
     public void SetItem(AssetItem item)
     {
         Item = item;
@@ -31,5 +34,12 @@ public class Loot : MonoBehaviour
     {
         OnTaken.Invoke(this);
         Destroy(gameObject);
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(_lifetime);
+
+        Taken();
     }
 }

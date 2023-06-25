@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Current
+  m_Shader: {fileID: 4800000, guid: eb3c6fb598ded4c71b8968e1c40a3b4d, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _HORIZONLINEBLENDMODE_ADD
+  - _SUNHALOBLENDMODE_ADD
+  - _VIEW_FINAL
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _HorizonLineBlendMode: 0
+    - _HorizonLineContribution: 0.36247098
+    - _HorizonLineExponent: 14.945948
+    - _SkyGradientExponent: 0.25289568
+    - _SunDiscContribution: 1
+    - _SunDiscExponent: 5366.786
+    - _SunDiscExponentSize: 100000
+    - _SunDiscMultiplier: 884.16034
+    - _SunDiscMultiplierSharpness: 100000
+    - _SunHaloBlendMode: 0
+    - _SunHaloContribution: 0.5
+    - _SunHaloExponent: 249.42087
+    - _View: 0
+    - __dirty: 0
+    m_Colors:
+    - _HorizonLineColor: {r: 0.8516013, g: 0.82358277, b: 0.7734728, a: 0.9961391}
+    - _SkyGradientBottom: {r: 0.99252397, g: 0.6468135, b: 0.519202, a: 1}
+    - _SkyGradientTop: {r: 0.24186288, g: 0.043005195, b: 0.39045724, a: 1}
+    - _SunDiscColor: {r: 1, g: 0.9518096, b: 0.93407905, a: 1}
+    - _SunHaloColor: {r: 0.9327166, g: 0.86208254, b: 0.8149462, a: 0.9961391}
+  m_BuildTextureStacks: []

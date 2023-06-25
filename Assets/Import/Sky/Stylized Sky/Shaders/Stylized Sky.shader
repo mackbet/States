@@ -8,7 +8,7 @@
         _SunDiscExponent ("Exponent", float) = 125000
 
         [Header(Sun Halo)]
-        _SunHaloColor ("Color", Color) = (0.8970588, 0.7760561, 0.6661981, 1)
+        _SunHaloColor ("Color1", Color) = (0.8970588, 0.7760561, 0.6661981, 1)
         _SunHaloExponent ("Exponent", float) = 125
         _SunHaloContribution ("Contribution", Range(0, 1)) = 0.75
 

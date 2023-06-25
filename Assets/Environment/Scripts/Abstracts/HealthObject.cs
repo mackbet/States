@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class HealthObject :  MonoBehaviour, IDamageable
 {
+    public int TeamId => teamId;
     public Action OnDead;
+    public bool immortal;
     public float Health {
         get
         {
@@ -23,11 +23,15 @@ public abstract class HealthObject :  MonoBehaviour, IDamageable
 
     public bool IsAlive => isAlive;
     private bool isAlive => Health > 0;
+    [SerializeField] private int teamId;
 
     [SerializeField] protected int armor;
 
     public void TakeDamage(float value)
     {
+        if (immortal)
+            return;
+
         Health -= value * ((100f - armor) / 100f);
     }
 

@@ -20,11 +20,11 @@ public class AttackController: MonoBehaviour
         onAttackDelayed += DealDamage;
     }
 
-    public void TryToAttack()
+    public void TryToAttack(int ownerId)
     {
         if (ready)
         {
-            ScanTargets();
+            ScanTargets(ownerId);
             StartCoroutine(Recharge());
             StartCoroutine(Delay());
 
@@ -51,13 +51,13 @@ public class AttackController: MonoBehaviour
 
 
     List<IDamageable> targets = new List<IDamageable>();
-    private void ScanTargets()
+    private void ScanTargets(int ownerId)
     {
         Collider[] colliders = Physics.OverlapSphere(_transform.position, Weapon.attackRange);
         foreach (Collider collider in colliders)
         {
             IDamageable damageable = collider.GetComponent<IDamageable>();
-            if (damageable != null)
+            if (damageable != null && damageable.TeamId != ownerId)
             {
                 Vector3 directionToTarget = collider.transform.position - _transform.position;
                 _characterRotator.RotateInstantly(directionToTarget);

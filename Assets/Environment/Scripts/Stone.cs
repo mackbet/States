@@ -8,7 +8,10 @@ public class Stone : HealthObject
 
     protected override void Die()
     {
-        pebbles.transform.SetParent(null, true);
+        if (!pebbles)
+            return;
+
+        pebbles.transform.SetParent(transform.parent, true);
         pebbles.gameObject.SetActive(true);
 
         base.Die();

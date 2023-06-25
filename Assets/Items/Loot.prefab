@@ -183,6 +183,7 @@ MonoBehaviour:
   <Item>k__BackingField: {fileID: 0}
   _rigidbody: {fileID: 729816090656185702}
   _lootVisual: {fileID: 729816090656185699}
+  _lifetime: 3
   OnTaken:
     m_PersistentCalls:
       m_Calls: []

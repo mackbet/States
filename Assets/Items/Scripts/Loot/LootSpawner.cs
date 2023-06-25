@@ -11,6 +11,7 @@ public class LootSpawner : MonoBehaviour
 
     [SerializeField] private float _power;
 
+
     public bool HasItem(AssetItem item)
     {
         foreach (SpawnableLoot loot in lootList)

@@ -1,36 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Market : MonoBehaviour, IMarket
 {
     public string Name => _name;
     public AssetItem Item => _item;
-    public int SellPrice => _sellPrice;
-    public int BuyPrice => _buyPrice;
-    public int ItemCount => _itemCount;
-    public int CoinsCount => _coinsCount;
+    public Ñommonwealth Ñommonwealth => _commonwealth;
+    public int SellPrice => Ñommonwealth.GetItemSellPrice(Item);
+    public int BuyPrice => Ñommonwealth.GetItemBuyPrice(Item);
+    public int ItemCount => Ñommonwealth.GetItemCount(Item);
+    public bool CoinsEnough => Ñommonwealth.CoinsCount > BuyPrice;
+    public bool ItemEnough => Ñommonwealth.GetItemCount(Item) > 0;
 
-    public bool CoinsEnough => _coinsCount > _buyPrice;
-    public bool ItemEnough => _itemCount > 0;
 
+
+    [HideInInspector] public UnityEvent<AssetItem, int> OnItemSold;
+    [HideInInspector] public UnityEvent<AssetItem, int> OnItemBought;
 
     [SerializeField] private string _name;
     [SerializeField] private AssetItem _item;
-    [SerializeField] private int _sellPrice;
-    [SerializeField] private int _buyPrice;
-    [SerializeField] private int _itemCount;
-    [SerializeField] private int _coinsCount;
+    [SerializeField] private Ñommonwealth _commonwealth;
 
     public void Buy()
     {
-        _itemCount++;
-        _coinsCount -= BuyPrice;
+        OnItemBought.Invoke(Item, BuyPrice);
     }
-
     public void Sell()
     {
-        _itemCount--;
-        _coinsCount += SellPrice;
+        OnItemSold.Invoke(Item, SellPrice);
     }
 }
