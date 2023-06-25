@@ -4,7 +4,7 @@ using UnityEngine;
 public class CityBuilder : MonoBehaviour
 {
     [SerializeField] private House _housePrefab;
-    [SerializeField] private List<Building> _buildingPrefabs;
+    [SerializeField] private Commonwealth _commonwealth;
     [SerializeField] private List<Building> _built;
     [SerializeField] private RoadDrawer _roadDrawer;
 
@@ -18,18 +18,22 @@ public class CityBuilder : MonoBehaviour
     private void Start()
     {
         Initialize();
-        BuildHouse();
+
+        _commonwealth.OnItemGot.AddListener((value) => BuildHouse());
     }
 
     public void BuildHouse()
     {
+        if (!_housePrefab.IsRequirementsMet(_commonwealth))
+            return;
+
         Vector3[] places = GetAvailablePlaces();
-        Debug.Log(places.Length);
         foreach (Vector3 place in places)
         {
             Building newBuilding = TryToBuild(_housePrefab,place);
             if (newBuilding)
             {
+                newBuilding.GetResources(_commonwealth);
                 return;
             }
         }

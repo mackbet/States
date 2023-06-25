@@ -5,7 +5,7 @@ public abstract class Market : MonoBehaviour, IMarket
 {
     public string Name => _name;
     public AssetItem Item => _item;
-    public Ñommonwealth Ñommonwealth => _commonwealth;
+    public Commonwealth Ñommonwealth => _commonwealth;
     public int SellPrice => Ñommonwealth.GetItemSellPrice(Item);
     public int BuyPrice => Ñommonwealth.GetItemBuyPrice(Item);
     public int ItemCount => Ñommonwealth.GetItemCount(Item);
@@ -19,7 +19,7 @@ public abstract class Market : MonoBehaviour, IMarket
 
     [SerializeField] private string _name;
     [SerializeField] private AssetItem _item;
-    [SerializeField] private Ñommonwealth _commonwealth;
+    [SerializeField] private Commonwealth _commonwealth;
 
     public void Buy()
     {

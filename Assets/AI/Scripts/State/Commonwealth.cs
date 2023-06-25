@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
-public class Ñommonwealth : MonoBehaviour
+public class Commonwealth : MonoBehaviour
 {
     [SerializeField] private List<ResourceData> _resourcesList;
     [SerializeField] private List<Market> _builtMarkets;
 
     [field: SerializeField] public int CoinsCount { get; private set; }
+
+    public UnityEvent<AssetItem> OnItemGot;
     private void Awake()
     {
         Initialize();
@@ -37,10 +40,6 @@ public class Ñommonwealth : MonoBehaviour
         }
         return selectedMarket;
     }
-    private void RemoveMarket(Market market)
-    {
-        _builtMarkets.Remove(market);
-    }
     public void GetTax(int value)
     {
         CoinsCount += value;
@@ -60,6 +59,14 @@ public class Ñommonwealth : MonoBehaviour
         int result = _resourcesList.Find((x) => x.item == item).SellPrice;
         return result;
     }
+    public void ReduceResource(AssetItem item, int count)
+    {
+        _resourcesList.Find((x) => x.item == item).Count -= count;
+    }
+    private void RemoveMarket(Market market)
+    {
+        _builtMarkets.Remove(market);
+    }
     private void Initialize()
     {
         foreach (Market market in _builtMarkets)
@@ -72,7 +79,7 @@ public class Ñommonwealth : MonoBehaviour
     {
         _resourcesList.Find((x) => x.item == item).Count += 1;
         CoinsCount -= value;
-
+        OnItemGot.Invoke(item);
     }
     private void ItemSold(AssetItem item, int value)
     {

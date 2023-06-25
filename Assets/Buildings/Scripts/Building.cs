@@ -12,6 +12,24 @@ public class Building : HealthObject
     {
         base.Die();
     }
+    public bool IsRequirementsMet(Commonwealth ñommonwealth)
+    {
+        foreach (BuildRequirement requirement in _requirements)
+        {
+            if (ñommonwealth.GetItemCount(requirement.Item) < requirement.Count)
+                return false;
+        }
+
+        return true;
+    }
+    public void GetResources(Commonwealth ñommonwealth)
+    {
+        foreach (BuildRequirement requirement in _requirements)
+        {
+            ñommonwealth.ReduceResource(requirement.Item, requirement.Count);
+        }
+    }
+    
     [Serializable]
     private class BuildRequirement
     {

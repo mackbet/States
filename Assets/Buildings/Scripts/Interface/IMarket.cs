@@ -2,7 +2,7 @@
 public interface IMarket
 {
     public string Name { get; }
-    public Ñommonwealth Ñommonwealth { get; }
+    public Commonwealth Ñommonwealth { get; }
     public AssetItem Item { get; }
     public int SellPrice{ get; }
     public int BuyPrice { get; }

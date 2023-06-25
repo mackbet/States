@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TaxesCollector : MonoBehaviour
 {
-    [SerializeField] private Ñommonwealth _ñommonwealth;
+    [SerializeField] private Commonwealth _ñommonwealth;
 
     [SerializeField] private List<House> _builtHouses;
     [SerializeField] private List<StateMachine> _characters;
