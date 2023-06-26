@@ -4883,8 +4883,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   immortal: 0
   health: 100
-  teamId: 3
-  armor: 20
+  _teamId: 0
+  _armor: 0
+  _parameters: {fileID: 0}
+  <MeshRenderer>k__BackingField: {fileID: 94143041147394514}
   _requirements:
   - <Item>k__BackingField: {fileID: 11400000, guid: 910c8866767377e418892be122aa781d, type: 2}
     <Count>k__BackingField: 20

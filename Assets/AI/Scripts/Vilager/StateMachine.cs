@@ -10,30 +10,35 @@ public class StateMachine : MonoBehaviour
     [field: SerializeField] public Inventory Inventory{ get; private set; }
     [field: SerializeField] public CollideEventHandler CollideEventHandler { get; private set; }
     [field: SerializeField] public TriggerEventHandler TriggerEventHandler { get; private set; }
-    [field: SerializeField] public AIParameters Parameters { get; private set; }
+    [field: SerializeField] public Parameters Parameters { get; private set; }
     [field: SerializeField] public Commonwealth Commonwealth { get; set; }
 
-    [SerializeField] private AIState _currentState;
+    [field:SerializeField] public AIState CurrentState { get; private set; }
 
     [HideInInspector] public UnityEvent<AIState> OnStateFinished;
     [HideInInspector] public UnityEvent<AIState> OnStateChanged;
 
     public bool RandomStates;
 
+    public void Start()
+    {
+        SetState(Brain.ComputeState(this));
+    }
+
     public void SetState(AIState newState)
     {
         var ins = Instantiate(newState);
-        _currentState = ins;
-        _currentState.OnStateFinished.AddListener(StateFinished);
-        _currentState.Initialize(this);
-        OnStateChanged.Invoke(_currentState);
+        CurrentState = ins;
+        CurrentState.OnStateFinished.AddListener(StateFinished);
+        CurrentState.Initialize(this);
+        OnStateChanged.Invoke(CurrentState);
     }
     private void StateFinished()
     {
-        OnStateFinished.Invoke(_currentState);
-        _currentState.OnStateFinished.RemoveListener(StateFinished);
+        OnStateFinished.Invoke(CurrentState);
+        CurrentState.OnStateFinished.RemoveListener(StateFinished);
 
-        Destroy(_currentState);
+        SetState(Brain.ComputeState(this));
     }
 
     

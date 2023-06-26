@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public abstract class HealthObject :  MonoBehaviour, IDamageable
+public abstract class HealthObject : MonoBehaviour, IDamageable
 {
-    public int TeamId => teamId;
+    public Parameters Parameters => _parameters;
+
     public Action OnDead;
     public bool immortal;
     public float Health {
@@ -23,16 +24,19 @@ public abstract class HealthObject :  MonoBehaviour, IDamageable
 
     public bool IsAlive => isAlive;
     private bool isAlive => Health > 0;
-    [SerializeField] private int teamId;
 
-    [SerializeField] protected int armor;
+
+    [SerializeField] private int _teamId;
+
+    [SerializeField] protected int _armor;
+    [SerializeField] protected Parameters _parameters;
 
     public void TakeDamage(float value)
     {
         if (immortal)
             return;
 
-        Health -= value * ((100f - armor) / 100f);
+        Health -= value * ((100f - _armor) / 100f);
     }
 
     protected virtual void Die()

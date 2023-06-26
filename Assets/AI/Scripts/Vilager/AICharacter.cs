@@ -33,7 +33,7 @@ public class AICharacter : Agent
             int Price = _stateMachine.Commonwealth.GetItemBuyPrice(assetItem);
 
             float MarketDistance = 30f;
-            Market market = _stateMachine.Commonwealth.GetMarket(assetItem, _stateMachine.transform.position);
+            Market market = _stateMachine.Commonwealth.GetMarket(_stateMachine.transform.position, assetItem);
             if (market)
                 MarketDistance = Vector3.Distance(market.transform.position, _stateMachine.transform.position);
 
@@ -54,7 +54,7 @@ public class AICharacter : Agent
         CustomAddReward(RewardValues.STATE_PENALTY);
         int index = actions.DiscreteActions[0];
 
-        _stateMachine.SetState(Brain.GetState(index));
+        //_stateMachine.SetState(Brain.GetState(index));
     }
     public void NextDesition(AIState lastState)
     {

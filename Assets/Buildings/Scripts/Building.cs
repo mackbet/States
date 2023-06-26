@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Building : HealthObject
 {
+    [field:SerializeField] public MeshRenderer MeshRenderer { get; private set; }
     [SerializeField] private List<BuildRequirement> _requirements = new List<BuildRequirement>();
 
     public Vector2Int indeces;
+
+    public void Initialize(Parameters parameters)
+    {
+        _parameters = parameters;
+
+        MeshRenderer.material = Parameters.BuildingMaterial;
+    }
 
     protected override void Die()
     {

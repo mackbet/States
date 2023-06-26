@@ -15,7 +15,7 @@ public class House : Building
         StartCoroutine(Delay());
     }
 
-    public void Initialize(Commonwealth commonwealth)
+    public void SetCommonwealth(Commonwealth commonwealth)
     {
         _character.Commonwealth = commonwealth;
     }

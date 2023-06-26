@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CityBuilder : MonoBehaviour
 {
+    [SerializeField] private Parameters _parameters;
     [SerializeField] private House _housePrefab;
     [SerializeField] private Commonwealth _commonwealth;
     [SerializeField] private TaxesCollector _taxesCollector;
@@ -34,7 +35,7 @@ public class CityBuilder : MonoBehaviour
             if (newHouse)
             {
                 newHouse.GetResources(_commonwealth);
-                newHouse.Initialize(_commonwealth);
+                newHouse.SetCommonwealth(_commonwealth);
                 _taxesCollector.AddHouse(newHouse);
                 return;
             }
@@ -64,6 +65,8 @@ public class CityBuilder : MonoBehaviour
 
         _buildingsMap[x, y] = newBuilding;
 
+        newBuilding.Initialize(_parameters);
+
         TryToDrawRoad(newBuilding);
     }
     private Building TryToBuild(Building building, Vector3 position)
@@ -77,7 +80,7 @@ public class CityBuilder : MonoBehaviour
                 return null;
             }
         }
-        Building newBuilding = Instantiate(building, position, Quaternion.identity);
+        Building newBuilding = Instantiate(building, position, Quaternion.identity, transform);
         _built.Add(newBuilding);
         Register(newBuilding);
         TryToDrawRoad(newBuilding);

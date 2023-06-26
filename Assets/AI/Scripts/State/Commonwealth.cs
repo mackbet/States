@@ -19,7 +19,7 @@ public class Commonwealth : MonoBehaviour
     {
         _builtMarkets.Add(market);
     }
-    public Market GetMarket(AssetItem item, Vector3 position)
+    public Market GetMarket(Vector3 position, AssetItem item)
     {
         float? minDistance = null;
         Market selectedMarket = null;

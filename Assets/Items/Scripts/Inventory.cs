@@ -77,7 +77,7 @@ public class Inventory : MonoBehaviour
 
         foreach (AssetItem inventoryItem in Items)
         {
-            if (item = inventoryItem)
+            if (item == inventoryItem)
                 count++;
         }
 

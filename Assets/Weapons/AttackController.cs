@@ -57,7 +57,7 @@ public class AttackController: MonoBehaviour
         foreach (Collider collider in colliders)
         {
             IDamageable damageable = collider.GetComponent<IDamageable>();
-            if (damageable != null && damageable.TeamId != ownerId)
+            if (damageable != null && damageable.Parameters.TeamId != ownerId)
             {
                 Vector3 directionToTarget = collider.transform.position - _transform.position;
                 _characterRotator.RotateInstantly(directionToTarget);
