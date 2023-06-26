@@ -16,7 +16,7 @@ public class GoMarket : AIState
     }
     private void ChooseMarket()
     {
-        Market = _stateMachine.Ñommonwealth.GetMarket(assetItem, _stateMachine.transform.position);
+        Market = _stateMachine.Commonwealth.GetMarket(assetItem, _stateMachine.transform.position);
         if (!Market || _stateMachine.MarketScanner.TargetMarket == Market)
         {
             _stateMachine.MarketScanner.OnMarketSelected -= ReachedMarket;

@@ -5,6 +5,7 @@ public class CityBuilder : MonoBehaviour
 {
     [SerializeField] private House _housePrefab;
     [SerializeField] private Commonwealth _commonwealth;
+    [SerializeField] private TaxesCollector _taxesCollector;
     [SerializeField] private List<Building> _built;
     [SerializeField] private RoadDrawer _roadDrawer;
 
@@ -14,7 +15,6 @@ public class CityBuilder : MonoBehaviour
 
     private Building[,] _buildingsMap;
 
-    public GameObject test;
     private void Start()
     {
         Initialize();
@@ -30,10 +30,12 @@ public class CityBuilder : MonoBehaviour
         Vector3[] places = GetAvailablePlaces();
         foreach (Vector3 place in places)
         {
-            Building newBuilding = TryToBuild(_housePrefab,place);
-            if (newBuilding)
+            House newHouse = (House)TryToBuild(_housePrefab, place);
+            if (newHouse)
             {
-                newBuilding.GetResources(_commonwealth);
+                newHouse.GetResources(_commonwealth);
+                newHouse.Initialize(_commonwealth);
+                _taxesCollector.AddHouse(newHouse);
                 return;
             }
         }
@@ -72,7 +74,6 @@ public class CityBuilder : MonoBehaviour
         {
             if (collider.TryGetComponent(out HealthObject healthObject))
             {
-                Instantiate(test, healthObject.transform.position, Quaternion.identity);
                 return null;
             }
         }
@@ -100,7 +101,6 @@ public class CityBuilder : MonoBehaviour
                     if (delta.magnitude == 1 && !currentBuilding)
                     {
                         places.Add(new Vector3(currentIndeces.x * _step, 0, currentIndeces.y * _step));
-                        Instantiate(test, new Vector3(currentIndeces.x * _step, 0, currentIndeces.y * _step), Quaternion.identity);
                     }
                 }
             }

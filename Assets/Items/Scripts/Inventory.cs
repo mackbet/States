@@ -23,19 +23,27 @@ public class Inventory : MonoBehaviour
         }
     }
     public bool IsEmpty => Items.Count == 0;
-
-    [SerializeField] private int coins;
-    [field:SerializeField] public List<AssetItem> Items { get; private set; }
+    public bool IsFull => Items.Count == capacity - 1;
 
     public Action<List<AssetItem>> OnItemsUpated;
 
+    [SerializeField] private int coins;
+    [field: SerializeField] public List<AssetItem> Items { get; private set; }
+    [SerializeField] private int capacity;
+
     public UnityEvent<AssetItem> OnItemGot;
     public UnityEvent<int> OnCoinGot;
-    public void AddItem(AssetItem item)
+    public bool AddItem(AssetItem item)
     {
-        Items.Add(item);
-        OnItemGot?.Invoke(item);
-        OnItemsUpated?.Invoke(Items);
+        if (!IsFull)
+        {
+            Items.Add(item);
+            OnItemGot?.Invoke(item);
+            OnItemsUpated?.Invoke(Items);
+            return true;
+        }
+        else
+            return false;
     }
     public void ItemSold(AssetItem item, int income)
     {

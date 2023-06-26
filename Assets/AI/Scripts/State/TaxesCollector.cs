@@ -18,15 +18,18 @@ public class TaxesCollector : MonoBehaviour
         StartCoroutine(CollectTaxes());
     }
 
+    public void AddHouse(House house)
+    {
+        _builtHouses.Add(house);
+        house.OnCharacterSpawned.AddListener((value) => _characters.Add(value));
+    }
     private void Initialize()
     {
-
         foreach (House house in _builtHouses)
         {
             house.OnCharacterSpawned.AddListener((value) => _characters.Add(value));
         }
     }
-
     IEnumerator CollectTaxes()
     {
         while (true)

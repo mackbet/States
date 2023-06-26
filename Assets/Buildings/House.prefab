@@ -4889,7 +4889,11 @@ MonoBehaviour:
   health: 100
   teamId: 3
   armor: 20
-  _requirements: []
+  _requirements:
+  - <Item>k__BackingField: {fileID: 11400000, guid: 1ab0c0f2714a9724396c049ca3a8098b, type: 2}
+    <Count>k__BackingField: 20
+  - <Item>k__BackingField: {fileID: 11400000, guid: 910c8866767377e418892be122aa781d, type: 2}
+    <Count>k__BackingField: 20
   indeces: {x: 0, y: 0}
   _character: {fileID: 3674556144411762127}
   _delay: 3
@@ -5041,6 +5045,10 @@ PrefabInstance:
     - target: {fileID: 2851240655902064415, guid: ec998bde480cb7c4baaff99e32d5a7ef, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365481970854260205, guid: ec998bde480cb7c4baaff99e32d5a7ef, type: 3}
+      propertyPath: MaxStep
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec998bde480cb7c4baaff99e32d5a7ef, type: 3}

@@ -15,6 +15,11 @@ public class House : Building
         StartCoroutine(Delay());
     }
 
+    public void Initialize(Commonwealth commonwealth)
+    {
+        _character.Commonwealth = commonwealth;
+    }
+
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(_delay);

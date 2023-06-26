@@ -11,7 +11,7 @@ public class StateMachine : MonoBehaviour
     [field: SerializeField] public CollideEventHandler CollideEventHandler { get; private set; }
     [field: SerializeField] public TriggerEventHandler TriggerEventHandler { get; private set; }
     [field: SerializeField] public AIParameters Parameters { get; private set; }
-    [field: SerializeField] public Commonwealth Ñommonwealth { get; private set; }
+    [field: SerializeField] public Commonwealth Commonwealth { get; set; }
 
     [SerializeField] private AIState _currentState;
 

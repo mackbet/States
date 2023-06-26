@@ -30,16 +30,16 @@ public class AICharacter : Agent
             List<float> itemData;
             int CountInInventory = _stateMachine.Inventory.GetItemCount(assetItem);
 
-            int Price = _stateMachine.Ñommonwealth.GetItemBuyPrice(assetItem);
+            int Price = _stateMachine.Commonwealth.GetItemBuyPrice(assetItem);
 
             float MarketDistance = 30f;
-            Market market = _stateMachine.Ñommonwealth.GetMarket(assetItem, _stateMachine.transform.position);
+            Market market = _stateMachine.Commonwealth.GetMarket(assetItem, _stateMachine.transform.position);
             if (market)
                 MarketDistance = Vector3.Distance(market.transform.position, _stateMachine.transform.position);
 
             int Exist = AIResourceMap.GetLootSpawnerCount(assetItem);
 
-            float ResourcesDistance = 30f;
+            float ResourcesDistance = 1000f;
             LootSpawner lootSpawner = AIResourceMap.GetClosestSpawner(_stateMachine.transform.position, assetItem);
             if(lootSpawner)
                 ResourcesDistance = Vector3.Distance(lootSpawner.transform.position, _stateMachine.transform.position);
@@ -62,24 +62,18 @@ public class AICharacter : Agent
     }
     public override void OnEpisodeBegin()
     {
-        /*
         StopAllCoroutines();
-        if (lastEnv)
-            Destroy(lastEnv);
-        lastEnv = Instantiate(envirovment,transform);
-        AIResourceMap.Instance.FillSpawnersManualy(lastEnv);
-
 
         _stateMachine.transform.position = initialPos;
         _stateMachine.Inventory.Reset();
 
         StartCoroutine(TimePenalty());
-        */
+        
         NextDesition(null);
     }
     private void End()
     {
-        //EndEpisode();
+        EndEpisode();
     }
     private void CustomAddReward(float value)
     {
