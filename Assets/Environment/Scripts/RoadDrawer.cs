@@ -12,7 +12,7 @@ public class RoadDrawer : MonoBehaviour
 
     float scaleX;
     float scaleZ;
-    private void Start()
+    private void Awake()
     {
         TerrainData terrainData = _terrain.terrainData;
         Vector3 terrainSize = terrainData.size;

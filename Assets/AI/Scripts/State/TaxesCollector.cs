@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TaxesCollector : MonoBehaviour
 {
+    public List<House> BuiltHouses => _builtHouses;
+
     [SerializeField] private Commonwealth _ñommonwealth;
 
     [SerializeField] private List<House> _builtHouses;
@@ -22,6 +24,11 @@ public class TaxesCollector : MonoBehaviour
     {
         _builtHouses.Add(house);
         house.OnCharacterSpawned.AddListener((value) => _characters.Add(value));
+        house.OnDead += () => RemoveHouse(house);
+    }
+    public void RemoveHouse(House house)
+    {
+        _builtHouses.Remove(house);
     }
     private void Initialize()
     {

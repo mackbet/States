@@ -937,9 +937,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immortal: 0
-  health: 20
-  teamId: 0
-  armor: 0
+  health: 40
+  _teamId: 0
+  _armor: 0
+  _parameters: {fileID: 11400000, guid: 622ad3b1b12b58b43b5f3e39b40761fa, type: 2}
   pebbles: {fileID: 3976296805126197881}
 --- !u!114 &3952555150378188658
 MonoBehaviour:

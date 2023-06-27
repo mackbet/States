@@ -288,30 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 408398922857779965}
   speed: 15
---- !u!95 &408398922916953354 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2552227609095421687, guid: 750903c67c5bb5949b12a954e24050ed, type: 3}
-  m_PrefabInstance: {fileID: 2792717568107758589}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &408398922924290336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2552227609102758621, guid: 750903c67c5bb5949b12a954e24050ed, type: 3}
-  m_PrefabInstance: {fileID: 2792717568107758589}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7054828336147296939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408398922924290336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61f3bc8b2f8a7de46bf4bebcb026166b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackController: {fileID: 5098092976629245333}
-  _animator: {fileID: 408398922916953354}
 --- !u!4 &408398924597797674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2552227607420854487, guid: 750903c67c5bb5949b12a954e24050ed, type: 3}
@@ -360,7 +336,7 @@ MonoBehaviour:
   <OnMoved>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7054828336147296939}
+      - m_Target: {fileID: 8501178236443172046}
         m_TargetAssemblyTypeName: CharacterAnimator, Assembly-CSharp
         m_MethodName: SetSpeed
         m_Mode: 0
@@ -398,3 +374,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482456fd8aefd37479998766665243b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5632213400442742662 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7559324873279661179, guid: 750903c67c5bb5949b12a954e24050ed, type: 3}
+  m_PrefabInstance: {fileID: 2792717568107758589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7198477911875502410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4983118988010291895, guid: 750903c67c5bb5949b12a954e24050ed, type: 3}
+  m_PrefabInstance: {fileID: 2792717568107758589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8501178236443172046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198477911875502410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f3bc8b2f8a7de46bf4bebcb026166b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackController: {fileID: 5098092976629245333}
+  _animator: {fileID: 5632213400442742662}

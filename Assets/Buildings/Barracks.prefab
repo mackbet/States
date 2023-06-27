@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4610658970267035474}
-  - component: {fileID: 4610658970267035484}
+  - component: {fileID: 3501161979038111577}
   - component: {fileID: 4610658970267035487}
   - component: {fileID: 4688445737077436762}
   - component: {fileID: 5874193783706184432}
@@ -137,7 +137,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4610658970267035484
+--- !u!114 &3501161979038111577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4610658970267035475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28049bdbedaf4c444b87eb41c7f293ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 1621715bded85e34a88e7a57492813d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   immortal: 0
@@ -157,9 +157,9 @@ MonoBehaviour:
   <MeshRenderer>k__BackingField: {fileID: 6679400306975339617}
   _requirements:
   - <Item>k__BackingField: {fileID: 11400000, guid: 910c8866767377e418892be122aa781d, type: 2}
-    <Count>k__BackingField: 20
+    <Count>k__BackingField: 50
   - <Item>k__BackingField: {fileID: 11400000, guid: 1ab0c0f2714a9724396c049ca3a8098b, type: 2}
-    <Count>k__BackingField: 30
+    <Count>k__BackingField: 50
   indeces: {x: 0, y: 0}
 --- !u!54 &4610658970267035487
 Rigidbody:

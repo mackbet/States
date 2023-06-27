@@ -4,7 +4,13 @@ using UnityEngine;
 public class CityBuilder : MonoBehaviour
 {
     [SerializeField] private Parameters _parameters;
+
+    [Header("Building Prefabs")]
     [SerializeField] private House _housePrefab;
+    [SerializeField] private Barracks _barracksPrefab;
+
+    [Header("References")]
+    [SerializeField] private MilitaryPart _militaryPart;
     [SerializeField] private Commonwealth _commonwealth;
     [SerializeField] private TaxesCollector _taxesCollector;
     [SerializeField] private List<Building> _built;
@@ -20,10 +26,24 @@ public class CityBuilder : MonoBehaviour
     {
         Initialize();
 
-        _commonwealth.OnItemGot.AddListener((value) => BuildHouse());
+        _commonwealth.OnItemGot.AddListener((value) => CalculateNextBuilding());
     }
 
-    public void BuildHouse()
+    private void CalculateNextBuilding()
+    {
+        int houseCount = _taxesCollector.BuiltHouses.Count;
+        int barracksCount = _militaryPart.BuiltBarracks.Count;
+
+        if(houseCount- barracksCount * 3 == 3)
+        {
+            BuildBarracks();
+        }
+        else
+        {
+            BuildHouse();
+        }
+    }
+    private void BuildHouse()
     {
         if (!_housePrefab.IsRequirementsMet(_commonwealth))
             return;
@@ -41,6 +61,26 @@ public class CityBuilder : MonoBehaviour
             }
         }
     }
+    private void BuildBarracks()
+    {
+        if (!_barracksPrefab.IsRequirementsMet(_commonwealth))
+            return;
+
+        Vector3[] places = GetAvailablePlaces();
+        foreach (Vector3 place in places)
+        {
+            Barracks newHouse = (Barracks)TryToBuild(_barracksPrefab, place);
+            if (newHouse)
+            {
+                newHouse.GetResources(_commonwealth);
+
+                _militaryPart.AddHouse(newHouse);
+                return;
+            }
+        }
+    }
+
+
     private void Initialize()
     {
         _buildingsMap = new Building[MapSize, MapSize];
