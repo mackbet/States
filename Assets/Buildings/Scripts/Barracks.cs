@@ -1,5 +1,4 @@
-using UnityEngine;
-
-public class Barracks : Building
+public class Barracks : House
 {
+
 }

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2a64c0fa2f9fe34f8723ed618ee0477, type: 3}
-  m_Name: Hammer
+  m_Name: Pick
   m_EditorClassIdentifier: 
-  <damage>k__BackingField: 5
-  <attackRange>k__BackingField: 2
-  <attackAngle>k__BackingField: 60
-  <attackRecharge>k__BackingField: 1
-  <attackTime>k__BackingField: 0.6
+  <Damage>k__BackingField: 5
+  <AttackRange>k__BackingField: 1.5
+  <AttackAngle>k__BackingField: 60
+  <AttackRecharge>k__BackingField: 1
+  <AttackTime>k__BackingField: 0.5
+  <Model>k__BackingField: {fileID: 3462783799803760942, guid: b078fbb4576827a4db174da871a1fcaf, type: 3}

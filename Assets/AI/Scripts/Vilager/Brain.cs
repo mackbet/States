@@ -13,6 +13,9 @@ public class Brain : MonoBehaviour
     [field: SerializeField] public AIState SellStone { get; private set; }
 
 
+    [field: SerializeField] public AIState Patrol { get; private set; }
+
+
     private void Awake()
     {
         Instance = this;
@@ -20,6 +23,7 @@ public class Brain : MonoBehaviour
 
     public static AIState ComputeState(StateMachine stateMachine)
     {
+        return Instance.Patrol;
         LootSpawner stone = AIResourceMap.GetClosestSpawner(stateMachine.transform.position, Instance.Stone);
         Market stoneMarket = stateMachine.Commonwealth.GetMarket(stateMachine.transform.position, Instance.Stone);
         float closestStone = 0;

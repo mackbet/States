@@ -10,15 +10,16 @@ public class StateMachine : MonoBehaviour
     [field: SerializeField] public Inventory Inventory{ get; private set; }
     [field: SerializeField] public CollideEventHandler CollideEventHandler { get; private set; }
     [field: SerializeField] public TriggerEventHandler TriggerEventHandler { get; private set; }
-    [field: SerializeField] public Parameters Parameters { get; private set; }
+    [field: SerializeField] public Parameters Parameters => _vilager.Parameters;
     [field: SerializeField] public Commonwealth Commonwealth { get; set; }
+    [field: SerializeField] public CityBuilder CityBuilder { get; set; }
 
     [field:SerializeField] public AIState CurrentState { get; private set; }
 
     [HideInInspector] public UnityEvent<AIState> OnStateFinished;
     [HideInInspector] public UnityEvent<AIState> OnStateChanged;
 
-    public bool RandomStates;
+    [SerializeField] private Vilager _vilager;
 
     public void Start()
     {

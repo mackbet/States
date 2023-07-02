@@ -26,23 +26,23 @@ Material:
     m_Ints: []
     m_Floats:
     - _HorizonLineBlendMode: 0
-    - _HorizonLineContribution: 1
-    - _HorizonLineExponent: 1
-    - _SkyGradientExponent: 1
+    - _HorizonLineContribution: 0.99999124
+    - _HorizonLineExponent: 1.0001918
+    - _SkyGradientExponent: 0.99998975
     - _SunDiscContribution: 1
-    - _SunDiscExponent: 100000
+    - _SunDiscExponent: 99998.695
     - _SunDiscExponentSize: 100000
-    - _SunDiscMultiplier: 100000
+    - _SunDiscMultiplier: 99998.63
     - _SunDiscMultiplierSharpness: 100000
     - _SunHaloBlendMode: 0
     - _SunHaloContribution: 0.5
-    - _SunHaloExponent: 100
+    - _SunHaloExponent: 100.00205
     - _View: 0
     - __dirty: 0
     m_Colors:
-    - _HorizonLineColor: {r: 3.8881926e-14, g: 7.158932e-14, b: 6.611482e-14, a: 1.107495e-15}
-    - _SkyGradientBottom: {r: 0.9607844, g: 0.90196085, b: 0.7725491, a: 1}
-    - _SkyGradientTop: {r: 0.90196085, g: 0.78823537, b: 0.58431375, a: 1}
-    - _SunDiscColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SunHaloColor: {r: 0.7735849, g: 0.69111997, b: 0.62397647, a: 7.739019e-14}
+    - _HorizonLineColor: {r: 0.000011714559, g: 0.000011329137, b: 0.000010639829, a: 0.000013702809}
+    - _SkyGradientBottom: {r: 0.9607848, g: 0.90195733, b: 0.77254564, a: 1}
+    - _SkyGradientTop: {r: 0.9019518, g: 0.7882251, b: 0.58431107, a: 1}
+    - _SunDiscColor: {r: 1, g: 0.99999934, b: 0.9999991, a: 1}
+    - _SunHaloColor: {r: 0.7735871, g: 0.6911223, b: 0.6239791, a: 0.000013702809}
   m_BuildTextureStacks: []

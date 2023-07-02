@@ -33,14 +33,11 @@ public class GoMarket : AIState
             targetPosition -= (direction.normalized * 4f);
             _stateMachine.Movement.MoveTo(targetPosition, "GoMarket");
         }
-
     }
     private void ReachedMarket(Market market)
     {
         if (Market == market)
         {
-            _stateMachine.Movement.StopMoving("GoMarket");
-
             if (Market.TryGetComponent(out Building building))
                 building.OnDead += ChooseMarket;
 

@@ -9,15 +9,17 @@ public class AttackController: MonoBehaviour
     [SerializeField] private CharacterRotator _characterRotator;
     [field:SerializeField] public Weapon Weapon { get; private set; }
 
-    public Action onAttackStarted;
-    public Action onAttackDelayed;
-    public Action onAttackRecharged;
+    public Action OnAttackStarted;
+    public Action OnAttackDelayed;
+    public Action OnAttackRecharged;
+
+    public Action<Weapon> OnWeaponChanged;
 
     [SerializeField] private bool ready = true;
 
     private void Awake()
     {
-        onAttackDelayed += DealDamage;
+        OnAttackDelayed += DealDamage;
     }
 
     public void TryToAttack(int ownerId)
@@ -28,42 +30,54 @@ public class AttackController: MonoBehaviour
             StartCoroutine(Recharge());
             StartCoroutine(Delay());
 
-            onAttackStarted?.Invoke();
+            OnAttackStarted?.Invoke();
         }
+    }
+    public bool InAttackZone(Vector3 position)
+    {
+        float distance = Vector3.Distance(position, transform.position);
+
+        return distance < Weapon.AttackRange;
+    }
+   
+    public void SetWeapon(Weapon newWeapon)
+    {
+        Weapon = newWeapon;
+        OnWeaponChanged.Invoke(newWeapon);
     }
     IEnumerator Delay()
     {
         DateTime start = DateTime.Now;
 
-        yield return new WaitForSeconds(Weapon.attackTime);
-        onAttackDelayed?.Invoke();
+        yield return new WaitForSeconds(Weapon.AttackTime);
+        OnAttackDelayed?.Invoke();
     }
     IEnumerator Recharge()
     {
         DateTime start = DateTime.Now;
 
         ready = false;
-        yield return new WaitForSeconds(Weapon.attackRecharge);
+        yield return new WaitForSeconds(Weapon.AttackRecharge);
         ready = true;
 
-        onAttackRecharged?.Invoke();
+        OnAttackRecharged?.Invoke();
     }
-
-
     List<IDamageable> targets = new List<IDamageable>();
     private void ScanTargets(int ownerId)
     {
-        Collider[] colliders = Physics.OverlapSphere(_transform.position, Weapon.attackRange);
+        Collider[] colliders = Physics.OverlapSphere(_transform.position, Weapon.AttackRange);
         foreach (Collider collider in colliders)
         {
-            IDamageable damageable = collider.GetComponent<IDamageable>();
-            if (damageable != null && damageable.Parameters.TeamId != ownerId)
+            if (collider.TryGetComponent(out IDamageable damageable))
             {
+                if (damageable.Parameters.TeamId == ownerId)
+                    continue;
+
                 Vector3 directionToTarget = collider.transform.position - _transform.position;
                 _characterRotator.RotateInstantly(directionToTarget);
 
                 float angle = Vector3.Angle(_transform.forward, directionToTarget);
-                if (angle < Weapon.attackAngle / 2)
+                if (angle < Weapon.AttackAngle / 2)
                     targets.Add(damageable);
             }
         }
@@ -73,15 +87,9 @@ public class AttackController: MonoBehaviour
         foreach (IDamageable target in targets)
         {
             if(target.IsAlive)
-                target.TakeDamage(Weapon.damage);
+                target.TakeDamage(Weapon.Damage);
         }
         
         targets.Clear();
-    }
-    public bool InAttackZone(Vector3 position)
-    {
-        float distance = Vector3.Distance(position, transform.position);
-
-        return distance < Weapon.attackRange;
     }
 }

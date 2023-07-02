@@ -32,7 +32,7 @@ public class GoLootSpawner : AIState
             TargetSpawner.HealthObject.OnDead += SpawnerStolen;
             Vector3 targetPosition = TargetSpawner.transform.position;
             Vector3 direction = TargetSpawner.transform.position - _stateMachine.transform.position;
-            targetPosition -= (direction.normalized * (_stateMachine.AttackController.Weapon.attackRange / 3));
+            targetPosition -= (direction.normalized * (_stateMachine.AttackController.Weapon.AttackRange / 3));
 
             _stateMachine.Movement.MoveTo(targetPosition, "GoStone");
         }

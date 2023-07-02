@@ -21,12 +21,8 @@ public abstract class HealthObject : MonoBehaviour, IDamageable
     }
     [SerializeField] private float health;
 
-
     public bool IsAlive => isAlive;
     private bool isAlive => Health > 0;
-
-
-    [SerializeField] private int _teamId;
 
     [SerializeField] protected int _armor;
     [SerializeField] protected Parameters _parameters;

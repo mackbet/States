@@ -51,17 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e8f131d60c3b147aa6b2f9626d7d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameters: {fileID: 11400000, guid: 9771250f027c51749b1392012c28895f, type: 2}
+  _parameters: {fileID: 11400000, guid: 8eb731dab9ead604da2e7cf4074fa12c, type: 2}
   _housePrefab: {fileID: 6707697421479834386, guid: 31f69f075ebdbfe4f8a8f06d8092c18c, type: 3}
   _barracksPrefab: {fileID: 3501161979038111577, guid: 367d8d7b1ca4de24fb918a4d1aab5b0f, type: 3}
   _militaryPart: {fileID: 8447472949554509339}
   _commonwealth: {fileID: 8447472949554509342}
   _taxesCollector: {fileID: 8447472949554509336}
-  _built:
+  <Built>k__BackingField:
   - {fileID: 5388321675083855842}
-  - {fileID: 8447472951068158892}
   - {fileID: 2895239103727189629}
   - {fileID: 2895239104278617595}
+  - {fileID: 8447472951068158892}
   _roadDrawer: {fileID: 0}
   _step: 12
   MapSize: 18
@@ -237,6 +237,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9771250f027c51749b1392012c28895f, type: 2}
     - target: {fileID: 3674556144411762127, guid: 31f69f075ebdbfe4f8a8f06d8092c18c, type: 3}
+      propertyPath: <CityBuilder>k__BackingField
+      value: 
+      objectReference: {fileID: 8447472949554509337}
+    - target: {fileID: 3674556144411762127, guid: 31f69f075ebdbfe4f8a8f06d8092c18c, type: 3}
       propertyPath: <Commonwealth>k__BackingField
       value: 
       objectReference: {fileID: 8447472949554509342}
@@ -337,6 +341,10 @@ PrefabInstance:
       propertyPath: <Parameters>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 9771250f027c51749b1392012c28895f, type: 2}
+    - target: {fileID: 3674556144411762127, guid: 31f69f075ebdbfe4f8a8f06d8092c18c, type: 3}
+      propertyPath: <CityBuilder>k__BackingField
+      value: 
+      objectReference: {fileID: 8447472949554509337}
     - target: {fileID: 3674556144411762127, guid: 31f69f075ebdbfe4f8a8f06d8092c18c, type: 3}
       propertyPath: <Commonwealth>k__BackingField
       value: 

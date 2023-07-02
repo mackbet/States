@@ -60,13 +60,13 @@ public class CharacterMovement : MonoBehaviour, IMovable, IRotatable
 
     private void OnEnable()
     {
-        _attackController.onAttackStarted += DisabledMovement;
-        _attackController.onAttackDelayed += EnabledMovement;
+        _attackController.OnAttackStarted += DisabledMovement;
+        _attackController.OnAttackDelayed += EnabledMovement;
     }
     private void OnDisable()
     {
-        _attackController.onAttackStarted -= DisabledMovement;
-        _attackController.onAttackDelayed -= EnabledMovement;
+        _attackController.OnAttackStarted -= DisabledMovement;
+        _attackController.OnAttackDelayed -= EnabledMovement;
     }
     private void EnabledMovement()
     {

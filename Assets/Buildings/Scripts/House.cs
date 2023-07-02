@@ -15,9 +15,10 @@ public class House : Building
         StartCoroutine(Delay());
     }
 
-    public void SetCommonwealth(Commonwealth commonwealth)
+    public void SetCommonwealth(Commonwealth commonwealth, CityBuilder cityBuilder)
     {
         _character.Commonwealth = commonwealth;
+        _character.CityBuilder = cityBuilder;
     }
 
     IEnumerator Delay()

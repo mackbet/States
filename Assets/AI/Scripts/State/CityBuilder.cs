@@ -13,7 +13,7 @@ public class CityBuilder : MonoBehaviour
     [SerializeField] private MilitaryPart _militaryPart;
     [SerializeField] private Commonwealth _commonwealth;
     [SerializeField] private TaxesCollector _taxesCollector;
-    [SerializeField] private List<Building> _built;
+    [field: SerializeField] public List<Building> Built { get; private set; }
     [SerializeField] private RoadDrawer _roadDrawer;
 
     [SerializeField] private int _step;
@@ -55,7 +55,7 @@ public class CityBuilder : MonoBehaviour
             if (newHouse)
             {
                 newHouse.GetResources(_commonwealth);
-                newHouse.SetCommonwealth(_commonwealth);
+                newHouse.SetCommonwealth(_commonwealth, this);
                 _taxesCollector.AddHouse(newHouse);
                 return;
             }
@@ -85,13 +85,13 @@ public class CityBuilder : MonoBehaviour
     {
         _buildingsMap = new Building[MapSize, MapSize];
 
-        foreach (Building building in _built)
+        foreach (Building building in Built)
         {
             Register(building);
         }
 
 
-        foreach (Building building in _built)
+        foreach (Building building in Built)
         {
             TryToDrawRoad(building);
         }
@@ -121,7 +121,7 @@ public class CityBuilder : MonoBehaviour
             }
         }
         Building newBuilding = Instantiate(building, position, Quaternion.identity, transform);
-        _built.Add(newBuilding);
+        Built.Add(newBuilding);
         Register(newBuilding);
         TryToDrawRoad(newBuilding);
 
@@ -130,7 +130,7 @@ public class CityBuilder : MonoBehaviour
     private Vector3[] GetAvailablePlaces()
     {
         List<Vector3> places = new List<Vector3>();
-        foreach (Building building in _built)
+        foreach (Building building in Built)
         {
             for (int i = -1; i <= 1; i++)
             {
@@ -181,5 +181,25 @@ public class CityBuilder : MonoBehaviour
 
         return false;
     }
-    
+    public bool IsBorderBuilding(Building building)
+    {
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                Vector2Int delta = new Vector2Int(i, j);
+                Vector2Int currentIndeces = building.indeces + delta;
+
+                if (!IsValidIndeces(currentIndeces))
+                    continue;
+
+                Building currentBuilding = _buildingsMap[currentIndeces.x, currentIndeces.y];
+                if (!currentBuilding)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

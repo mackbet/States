@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,9 +5,9 @@ public abstract class AIComplexState : AIState
 {
     [field:SerializeField] public AIState CurrentState { get; protected set; } = null;
 
-    public override void Initialize(StateMachine aiCharacter)
+    public override void Initialize(StateMachine stateMachine)
     {
-        base.Initialize(aiCharacter);
+        base.Initialize(stateMachine);
     }
     public void SetState(AIState newState, UnityAction action)
     {

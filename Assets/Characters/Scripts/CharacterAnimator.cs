@@ -7,13 +7,13 @@ public class CharacterAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _attackController.onAttackStarted += SetAttack;
-        _attackController.onAttackDelayed += StopAttack;
+        _attackController.OnAttackStarted += SetAttack;
+        _attackController.OnAttackDelayed += StopAttack;
     }
     private void OnDisable()
     {
-        _attackController.onAttackStarted -= SetAttack;
-        _attackController.onAttackDelayed -= StopAttack;
+        _attackController.OnAttackStarted -= SetAttack;
+        _attackController.OnAttackDelayed -= StopAttack;
     }
     public void SetSpeed(float speed)
     {

@@ -29,7 +29,7 @@ public class CrushHealthObject : AIState
             _attackController = _stateMachine.AttackController;
 
             TargetSpawner.HealthObject.OnDead += StoneCrushed;
-            _attackController.onAttackRecharged += Hit;
+            _attackController.OnAttackRecharged += Hit;
             Hit();
         }
     }
@@ -41,7 +41,7 @@ public class CrushHealthObject : AIState
 
     public void StoneCrushed()
     {
-        _attackController.onAttackRecharged -= Hit;
+        _attackController.OnAttackRecharged -= Hit;
 
         FinishState();
     }
