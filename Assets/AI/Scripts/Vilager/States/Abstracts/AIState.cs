@@ -10,7 +10,7 @@ public abstract class AIState : ScriptableObject
     protected StateMachine _stateMachine = null;
     public virtual void Initialize(StateMachine stateMachine)
     {
-       //Debug.Log(name + " started");
+        //Debug.Log(name + " started");
         _stateMachine = stateMachine;
     }
 

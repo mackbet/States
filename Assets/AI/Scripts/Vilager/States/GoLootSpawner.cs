@@ -20,7 +20,6 @@ public class GoLootSpawner : AIState
         if (!TargetSpawner)
         {
             isFailed = true;
-            //Debug.Log("There are not stone");
             FinishState();
         }
         else if (_stateMachine.AttackController.InAttackZone(TargetSpawner.transform.position))

@@ -16,3 +16,6 @@ MonoBehaviour:
   OnStateFinished:
     m_PersistentCalls:
       m_Calls: []
+  targetBuilding: {fileID: 0}
+  minDistance: 4
+  viewRange: 15

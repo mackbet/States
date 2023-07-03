@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class House : Building
 {
-    [SerializeField] private StateMachine _character;
+    [SerializeField] protected StateMachine _character;
     [SerializeField] private float _delay;
 
     public UnityEvent<StateMachine> OnCharacterSpawned;
@@ -21,10 +20,13 @@ public class House : Building
         _character.CityBuilder = cityBuilder;
     }
 
+    public virtual void Setup() { }
+
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(_delay);
 
+        Setup();
         _character.gameObject.SetActive(true);
         OnCharacterSpawned.Invoke(_character);
     }

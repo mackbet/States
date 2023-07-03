@@ -4,22 +4,19 @@ using UnityEngine;
 public class Patrol : AIComplexState
 {
     [SerializeField] AIState _checkPoint;
-    [SerializeField] AIState _attackEnemy;
+    [SerializeField] AIState _safeAttack;
     public override void Initialize(StateMachine stateMachine)
     {
         base.Initialize(stateMachine);
 
         GoPoint();
     }
-
     private void GoPoint()
     {
         SetState(_checkPoint, AttackEnemy);
     }
-
     public void AttackEnemy()
     {
-        FinishState();
-        Debug.Log("Patroled");
+        SetState(_safeAttack, FinishState);
     }
 }

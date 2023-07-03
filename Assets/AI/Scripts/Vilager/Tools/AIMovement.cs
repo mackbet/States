@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class AIMovement : MonoBehaviour, IMovable, IRotatable
 {
     public string state;
+    [SerializeField] private float _runSpeed;
+    [SerializeField] private float _walkSpeed;
     [SerializeField] private float _chaseAccurancy;
     [SerializeField] private float _chaseFrequency;
     [SerializeField] private NavMeshAgent _agent;
@@ -71,5 +73,13 @@ public class AIMovement : MonoBehaviour, IMovable, IRotatable
         _agent.isStopped = true;
         OnMoved.Invoke(0);
         state = "StopMoving " + tag;
+    }
+    public void Run()
+    {
+        _agent.speed = _runSpeed;
+    }
+    public void Walk()
+    {
+        _agent.speed = _walkSpeed;
     }
 }

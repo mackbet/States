@@ -23,14 +23,24 @@ public class Brain : MonoBehaviour
 
     public static AIState ComputeState(StateMachine stateMachine)
     {
-        return Instance.Patrol;
+        if (stateMachine.Vilager.Specialization == Specialization.Worker)
+            return Worker(stateMachine);
+        else if (stateMachine.Vilager.Specialization == Specialization.Soldier)
+            return Soldier(stateMachine);
+        else
+            return null;
+
+
+    }
+    private static AIState Worker(StateMachine stateMachine)
+    {
         LootSpawner stone = AIResourceMap.GetClosestSpawner(stateMachine.transform.position, Instance.Stone);
         Market stoneMarket = stateMachine.Commonwealth.GetMarket(stateMachine.transform.position, Instance.Stone);
         float closestStone = 0;
         float closestStoneMarket = 0;
         if (stone)
             closestStone = Vector3.Distance(stateMachine.transform.position, stone.transform.position);
-        if(stoneMarket)
+        if (stoneMarket)
             closestStoneMarket = Vector3.Distance(stateMachine.transform.position, stoneMarket.transform.position);
 
         LootSpawner wood = AIResourceMap.GetClosestSpawner(stateMachine.transform.position, Instance.Wood);
@@ -39,11 +49,11 @@ public class Brain : MonoBehaviour
         float closestWoodMarket = 0;
         if (wood)
             closestWood = Vector3.Distance(stateMachine.transform.position, wood.transform.position);
-        if(woodMarket)
+        if (woodMarket)
             closestWoodMarket = Vector3.Distance(stateMachine.transform.position, woodMarket.transform.position);
 
 
-        if (stoneMarket && stoneMarket.CoinsEnough && (closestStoneMarket<closestStone || stateMachine.Inventory.IsFull) && stateMachine.Inventory.GetItemCount(Instance.Stone) > 0)
+        if (stoneMarket && stoneMarket.CoinsEnough && (closestStoneMarket < closestStone || stateMachine.Inventory.IsFull) && stateMachine.Inventory.GetItemCount(Instance.Stone) > 0)
         {
             return Instance.SellStone;
         }
@@ -53,7 +63,7 @@ public class Brain : MonoBehaviour
         }
         else
         {
-            if(stone && wood)
+            if (stone && wood)
             {
                 return closestStone < closestWood ? Instance.GetStone : Instance.GetWood;
             }
@@ -68,4 +78,9 @@ public class Brain : MonoBehaviour
             }
         }
     }
+    private static AIState Soldier(StateMachine stateMachine)
+    {
+        return Instance.Patrol;
+    }
+
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TeamId>k__BackingField: 1
   <BuildingMaterial>k__BackingField: {fileID: 2100000, guid: 4a8b820c98c7b4540bab4e4f3d70d7fb, type: 2}
+  <PanoplyMaterial>k__BackingField: {fileID: 2100000, guid: 5070db5067422e041a6bb8c1681020b8, type: 2}

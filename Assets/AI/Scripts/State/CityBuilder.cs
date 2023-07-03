@@ -69,17 +69,16 @@ public class CityBuilder : MonoBehaviour
         Vector3[] places = GetAvailablePlaces();
         foreach (Vector3 place in places)
         {
-            Barracks newHouse = (Barracks)TryToBuild(_barracksPrefab, place);
-            if (newHouse)
+            Barracks newBarracks = (Barracks)TryToBuild(_barracksPrefab, place);
+            if (newBarracks)
             {
-                newHouse.GetResources(_commonwealth);
-
-                _militaryPart.AddHouse(newHouse);
+                newBarracks.GetResources(_commonwealth);
+                newBarracks.SetCommonwealth(_commonwealth, this);
+                _militaryPart.AddHouse(newBarracks);
                 return;
             }
         }
     }
-
 
     private void Initialize()
     {

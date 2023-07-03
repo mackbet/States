@@ -8,6 +8,19 @@ public class PanoplyVisual : MonoBehaviour
 
     private GameObject _lastPanoply;
 
+    private void Start()
+    {
+        foreach (PanoplyData panoplyModel in _panoplyModels)
+        {
+            SkinnedMeshRenderer[] skinnedMeshRenderers = panoplyModel.Model.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+            foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinnedMeshRenderers)
+            {
+                skinnedMeshRenderer.material = _vilager.Parameters.PanoplyMaterial;
+            }
+        }
+    }
+
     private void OnEnable()
     {
         UpdateVisual(_vilager.Panoply);

@@ -36,7 +36,7 @@ public class CrushHealthObject : AIState
 
     public void Hit()
     {
-        _attackController.TryToAttack(_stateMachine.Parameters.TeamId);
+        _attackController.TryToAttack(_stateMachine.Vilager.Parameters.TeamId);
     }
 
     public void StoneCrushed()
